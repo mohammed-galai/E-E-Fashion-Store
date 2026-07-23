@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 520" width="500" height="520">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,300;1,400;0,300&amp;family=Cinzel:wght@400;500&amp;display=swap');
+
+      .cursive-ee {
+        font-family: 'Cormorant Garamond', 'Palatino Linotype', Georgia, serif;
+        font-style: italic;
+        font-weight: 300;
+        fill: #1A1918;
+      }
+      .ampersand {
+        font-family: 'Cormorant Garamond', 'Palatino Linotype', Georgia, serif;
+        font-style: italic;
+        font-weight: 300;
+        fill: #1A1918;
+      }
+      .serif-e {
+        font-family: 'Cinzel', 'Trajan Pro', 'Times New Roman', serif;
+        font-weight: 500;
+        fill: #1A1918;
+      }
+      .fashion-text {
+        font-family: 'Cinzel', 'Trajan Pro', 'Times New Roman', serif;
+        font-weight: 400;
+        fill: #1A1918;
+        letter-spacing: 8px;
+        font-size: 17px;
+      }
+    </style>
+    <!-- Arc path for curved "FASHION STORE" text along bottom -->
+    <path id="textArc" d="M 100,360 A 160,160 0 0,0 400,360" fill="none"/>
+  </defs>
+
+  <!-- White background -->
+  <rect width="500" height="520" fill="#ffffff"/>
+
+  <!-- ─────────────────────────────────────────────
+       THIN PARTIAL CIRCLE ARC
+       Large arc, open gap at bottom-right (like original logo)
+  ───────────────────────────────────────────── -->
+  <path
+    d="M 155,95 A 170,170 0 1,1 415,315"
+    fill="none"
+    stroke="#1A1918"
+    stroke-width="1.2"
+    stroke-linecap="round"
+  />
+
+  <!-- ─────────────────────────────────────────────
+       MONOGRAM: cursive "E" + "&" + serif "E"
+       Centered in the circle, using actual font glyphs
+  ───────────────────────────────────────────── -->
+
+  <!-- Cursive italic "E" — large, positioned left -->
+  <text
+    class="cursive-ee"
+    x="133"
+    y="240"
+    font-size="155"
+    transform="skewX(-5)"
+  >E</text>
+
+  <!-- Decorative italic "&" — smaller, center -->
+  <text
+    class="ampersand"
+    x="222"
+    y="230"
+    font-size="90"
+  >&amp;</text>
+
+  <!-- Bold serif "E" — right side, upright, with bottom tail achieved via transform -->
+  <text
+    class="serif-e"
+    x="285"
+    y="248"
+    font-size="138"
+  >E</text>
+
+  <!-- Decorative long tail line sweeping from bottom-right of serif E downward -->
+  <path
+    d="M 370,250 C 388,252 408,262 420,278 C 428,290 424,305 415,312"
+    fill="none"
+    stroke="#1A1918"
+    stroke-width="6"
+    stroke-linecap="round"
+  />
+
+  <!-- ─────────────────────────────────────────────
+       CURVED TEXT: FASHION  STORE
+  ───────────────────────────────────────────── -->
+  <text class="fashion-text">
+    <textPath href="#textArc" startOffset="50%" text-anchor="middle">
+      FASHION  STORE
+    </textPath>
+  </text>
+
+</svg>

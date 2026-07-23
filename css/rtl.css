@@ -1,0 +1,108 @@
+/* ==========================================================================
+   JLALB ARABIC RTL OVERRIDES STYLESHEET
+   Handles font hierarchy, flex direction flips, margin mirroring & iconography
+   ========================================================================== */
+
+[dir="rtl"] body {
+  font-family: var(--font-arabic);
+  direction: rtl;
+  text-align: right;
+}
+
+[dir="rtl"] h1, 
+[dir="rtl"] h2, 
+[dir="rtl"] h3, 
+[dir="rtl"] h4, 
+[dir="rtl"] h5, 
+[dir="rtl"] h6,
+[dir="rtl"] .logo-text,
+[dir="rtl"] .hero-title,
+[dir="rtl"] .pd-title,
+[dir="rtl"] .product-card-title {
+  font-family: var(--font-arabic);
+  font-weight: 600;
+}
+
+/* Header & Nav RTL */
+[dir="rtl"] .header-logo {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .lang-dropdown-menu {
+  right: auto;
+  left: 0;
+}
+
+[dir="rtl"] .badge-count {
+  right: auto;
+  left: 4px;
+}
+
+/* Cart Drawer RTL */
+[dir="rtl"] .cart-drawer {
+  right: auto;
+  left: -480px;
+  transition: left var(--transition-smooth);
+}
+
+[dir="rtl"] .cart-drawer.open {
+  right: auto;
+  left: 0;
+}
+
+/* Mobile Drawer RTL */
+[dir="rtl"] .mobile-drawer {
+  right: auto;
+  left: -100%;
+  transition: left var(--transition-smooth);
+}
+
+[dir="rtl"] .mobile-drawer.open {
+  right: auto;
+  left: 0;
+}
+
+/* Product Card RTL */
+[dir="rtl"] .product-card-tag {
+  left: auto;
+  right: 16px;
+}
+
+[dir="rtl"] .wishlist-heart-btn {
+  right: auto;
+  left: 16px;
+}
+
+[dir="rtl"] .old-price {
+  margin-left: 0;
+  margin-right: 8px;
+}
+
+/* Craftsmanship Steps RTL */
+[dir="rtl"] .craft-step-card {
+  border-left: none;
+  border-right: 4px solid var(--accent-gold);
+}
+
+/* Toast RTL */
+[dir="rtl"] .toast-container {
+  right: auto;
+  left: 32px;
+}
+
+/* Quick View & Size Guide RTL */
+[dir="rtl"] .modal-close {
+  right: auto;
+  left: 20px;
+}
+
+[dir="rtl"] .color-swatch, [dir="rtl"] .size-btn {
+  margin-right: 0;
+  margin-left: 8px;
+}
+
+/* Arrow Icon Flips */
+[dir="rtl"] .arrow-icon,
+[dir="rtl"] .btn svg {
+  transform: scaleX(-1);
+}
