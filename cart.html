@@ -1,0 +1,282 @@
+﻿<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Bag | E&E Fashion Store (@elyasmine_brand)</title>
+  <meta name="description" content="View your shopping bag, select delivery city (Agadir Free / Other Cities +50 DH), and order directly on WhatsApp +212720691741.">
+
+<link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/rtl.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <style>
+    .cart-table-wrap {
+      width: 100%;
+      overflow-x: auto;
+      margin-bottom: 40px;
+    }
+    .cart-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+    [dir="rtl"] .cart-table {
+      text-align: right;
+    }
+    .cart-table th {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border-color);
+      color: var(--text-muted);
+    }
+    .cart-table td {
+      padding: 24px 20px;
+      border-bottom: 1px solid var(--border-color);
+      vertical-align: middle;
+    }
+    .cart-table-img {
+      width: 80px;
+      height: 105px;
+      object-fit: cover;
+      border-radius: var(--radius-sm);
+    }
+    .cart-table-prod {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .cart-table-title {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+    }
+    .cart-table-subtitle {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    .cart-table-spec {
+      font-size: 0.8rem;
+      color: var(--accent-gold);
+      margin-top: 4px;
+    }
+    .cart-table-price, .cart-table-total {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
+    .cart-summary-box {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 32px;
+      box-shadow: var(--shadow-md);
+    }
+  </style>
+</head>
+<body>
+
+<header id="main-header" class="main-header">
+    <div class="container header-inner">
+      <button id="mobile-menu-trigger" class="mobile-menu-trigger header-icon-btn" aria-label="Open Navigation">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+
+      <a href="index.html" class="header-logo" style="display: flex; align-items: center; gap: 12px;">
+        <img src="assets/images/insta_profile.png" style="border-radius:50%; object-fit:cover; border:2px solid #C9A96E;" alt="E&E Logo" style="height: 52px;">
+        <div>
+          <span class="logo-text" style="font-size: 1.6rem;">E&E STORE</span>
+          <span class="logo-tagline">@ELYASMINE_BRAND</span>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link" data-i18n="nav_home">Home</a>
+        <a href="collection.html" class="nav-link" data-i18n="nav_collection">Collection</a>
+        <a href="about.html" class="nav-link" data-i18n="nav_about">Atelier & Story</a>
+        <a href="contact.html" class="nav-link" data-i18n="nav_contact">Contact & Insta</a>
+      </nav>
+
+      <div class="header-utils">
+        <button id="search-trigger-btn" class="header-icon-btn" aria-label="Search">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+
+        <button id="theme-toggle-btn" class="header-icon-btn" aria-label="Toggle Dark Mode">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        </div>
+
+        <a href="collection.html" class="header-icon-btn" aria-label="Wishlist">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          <span class="wishlist-badge-count badge-count" style="display:none;">0</span>
+        </a>
+
+        <button id="cart-drawer-trigger" class="header-icon-btn" aria-label="Shopping Bag">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <span class="cart-badge-count badge-count" style="display:none;">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+<main class="container" style="padding: calc(var(--nav-height) + 40px) 0 100px;">
+    <h1 class="hero-title" style="color: var(--text-primary); font-size: 3.2rem; margin-bottom: 40px;" data-i18n="cart_title">Your Shopping Bag</h1>
+
+    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 40px;">
+
+<div>
+        <div class="cart-table-wrap">
+          <table class="cart-table">
+            <thead>
+              <tr>
+                <th>Creation</th>
+                <th>Prix Unit</th>
+                <th>QuantitÃ©</th>
+                <th>Total</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="full-cart-items">
+              
+            </tbody>
+          </table>
+        </div>
+
+        <a href="collection.html" class="btn btn-outline" style="margin-top: 20px;">&larr; Continue Shopping</a>
+      </div>
+
+<div>
+        <div id="cart-summary-box" class="cart-summary-box">
+          <h3 style="font-family: var(--font-serif); font-size: 1.8rem; margin-bottom: 24px;">Order Summary</h3>
+          
+          <div style="display: flex; justify-content: space-between; font-size: 1rem; margin-bottom: 12px;">
+            <span data-i18n="subtotal">Subtotal</span>
+            <strong id="cart-page-subtotal" style="font-family: var(--font-serif); font-size: 1.2rem;">0 DH</strong>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; font-size: 1rem; margin-bottom: 12px; color: var(--accent-gold);">
+            <span>Discount</span>
+            <strong id="cart-page-discount">-0 DH</strong>
+          </div>
+
+<div style="margin: 16px 0; padding: 14px; background: var(--bg-subtle); border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
+            <label style="display: block; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; margin-bottom: 6px;">ðŸ“ Ville de livraison / Ù…Ø¯ÙŠÙ†Ø© Ø§Ù„ØªÙˆØµÙŠÙ„:</label>
+            <select onchange="window.cartManager.setCity(this.value)" style="width: 100%; padding: 10px; border-radius: var(--radius-sm); border: 1px solid var(--border-color); background: var(--bg-surface); font-family: inherit; font-size: 0.85rem;">
+              <option value="agadir">Agadir (Livraison GRATUITE / Ù…Ø¬Ø§Ù†ÙŠ)</option>
+              <option value="other">Autre Ville au Maroc (+50 DH)</option>
+            </select>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; font-size: 0.9rem; margin-bottom: 24px; color: var(--text-muted);">
+            <span data-i18n="shipping">Frais de Livraison</span>
+            <span id="cart-page-shipping" style="color: var(--text-primary); font-weight: 600;">Gratuit (Agadir)</span>
+          </div>
+
+<form id="promo-form" style="display: flex; gap: 8px; margin-bottom: 24px;">
+            <input type="text" name="promo_code" placeholder="Code promo (ex: AGADIR)" style="flex: 1; padding: 10px 14px; border: 1px solid var(--border-color); border-radius: var(--radius-sm); font-size: 0.85rem; background: var(--bg-primary); color: var(--text-primary);">
+            <button type="submit" class="btn btn-outline" style="padding: 10px 16px; font-size: 0.75rem;" data-i18n="apply_promo">Apply</button>
+          </form>
+
+          <div style="display: flex; justify-content: space-between; font-size: 1.4rem; font-family: var(--font-serif); padding-top: 16px; border-top: 1px solid var(--border-color); margin-bottom: 24px;">
+            <span data-i18n="total">Total</span>
+            <strong id="cart-page-total" style="color: var(--accent-gold);">0 DH</strong>
+          </div>
+
+          <button type="button" id="whatsapp-checkout-page" class="btn btn-whatsapp" style="width: 100%;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+            <span data-i18n="checkout_whatsapp">Checkout via WhatsApp (+212720691741)</span>
+          </button>
+
+          <div style="margin-top: 20px; font-size: 0.8rem; color: var(--text-muted); text-align: center;">
+            ðŸ”’ E&E Fashion Store Concierge Order
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+<footer class="main-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+            <img src="assets/images/insta_profile.png" style="border-radius:50%; object-fit:cover; border:2px solid #C9A96E;" style="height:48px;">
+            <span class="logo-text" style="color:#FFF; font-size:1.8rem;">E&E FASHION STORE</span>
+          </div>
+          <p class="footer-brand-desc" data-i18n="footer_about">E&E Fashion Store (@elyasmine_brand) is a Moroccan luxury brand crafting custom Jellabas with high precision, premium fabrics, and free delivery in Agadir.</p>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Navigation</h4>
+          <div class="footer-links">
+            <a href="index.html" data-i18n="nav_home">Home</a>
+            <a href="collection.html" data-i18n="nav_collection">Collection</a>
+            <a href="about.html" data-i18n="nav_about">Atelier & Story</a>
+            <a href="contact.html" data-i18n="nav_contact">Contact & Insta</a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Contact Concierge</h4>
+          <div class="footer-links">
+            <a href="https://wa.me/212720691741" target="_blank">ðŸ“± WhatsApp: +212 720691741</a>
+            <a href="https://www.instagram.com/elyasmine_brand/" target="_blank">ðŸ“¸ Instagram: @elyasmine_brand</a>
+            <a>ðŸ“ Agadir: Livraison GRATUITE</a>
+            <a>ðŸšš Autres villes au Maroc: +50 DH</a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Newsletter</h4>
+          <p style="font-size: 0.85rem; color: #B0AAA0;">Restez informÃ©e des nouvelles Ø¬Ù„Ø§Ø¨ÙŠØ¨ Ø¹Ù„Ù‰ Ø­Ø³Ø§Ø¨Ù†Ø§.</p>
+          <form class="footer-newsletter-input" onsubmit="event.preventDefault(); window.showToast('Merci de votre inscription Ã  E&E Fashion Store', 'check');">
+            <input type="email" placeholder="Votre email..." required>
+            <button type="submit" class="btn btn-primary" style="padding: 12px 18px;">Join</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span data-i18n="footer_rights">All Rights Reserved. E&E Fashion Store.</span>
+        <span>@elyasmine_brand Â© 2026</span>
+      </div>
+    </div>
+  </footer>
+
+<div id="cart-overlay" class="cart-overlay"></div>
+  <aside id="cart-drawer" class="cart-drawer">
+    <div class="cart-drawer-header">
+      <h3 class="cart-drawer-title" data-i18n="cart_title">Your Shopping Bag</h3>
+      <button id="cart-drawer-close" class="modal-close">&times;</button>
+    </div>
+    <div id="cart-drawer-items" class="cart-drawer-items"></div>
+    <div class="cart-drawer-footer">
+      <div class="cart-summary-row">
+        <span data-i18n="subtotal">Subtotal</span>
+        <strong id="cart-drawer-subtotal">0 DH</strong>
+      </div>
+      <button type="button" id="whatsapp-checkout-drawer" class="btn btn-whatsapp" style="width: 100%; margin-top: 16px;">
+        <span data-i18n="checkout_whatsapp">Checkout via WhatsApp (+212720691741)</span>
+      </button>
+    </div>
+  </aside>
+
+<script src="js/products-data.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/wishlist.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/modal.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      if (window.cartManager) window.cartManager.renderCartPage();
+    });
+  </script>
+</body>
+</html>
+
+
